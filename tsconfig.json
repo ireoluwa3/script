@@ -1,0 +1,60 @@
+{
+  "compilerOptions": {
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    // "strict": true,
+    "noEmit": true,
+    "outDir": "./dist",
+    "module": "CommonJS",
+    "target": "ES2018",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "downlevelIteration": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": ["./src/*"],
+      "@b/*": ["./backend/*"],
+      "@db/*": ["./models/*"]
+    },
+    "strict": false,
+    "isolatedModules": true,
+    "strictNullChecks": true
+  },
+  "files": [
+    "./types/index.d.ts",
+    "./types/builder.d.ts",
+    "./types/ai.d.ts",
+    "./types/blog.d.ts",
+    "./types/ecommerce.d.ts",
+    "./types/ecosystem.d.ts",
+    "./types/exchange.d.ts",
+    "./types/faq.d.ts",
+    "./types/forex.d.ts",
+    "./types/ico.d.ts",
+    "./types/kyc.d.ts",
+    "./types/mailwizard.d.ts",
+    "./types/metadata.d.ts",
+    "./types/mlm.d.ts",
+    "./types/p2p.d.ts",
+    "./types/staking.d.ts",
+    "./types/template.d.ts",
+    "./types/wallet.d.ts"
+  ],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "src/types..dts"
+  ],
+  "exclude": ["node_modules"]
+}

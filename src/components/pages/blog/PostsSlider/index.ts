@@ -1,0 +1,1 @@
+export { PostsSlider } from "./PostsSlider";

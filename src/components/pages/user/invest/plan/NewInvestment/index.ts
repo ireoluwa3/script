@@ -1,0 +1,1 @@
+export { NewInvestment } from "./NewInvestment";

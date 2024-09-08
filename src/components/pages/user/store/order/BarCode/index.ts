@@ -1,0 +1,1 @@
+export { BarCode } from "./BarCode";

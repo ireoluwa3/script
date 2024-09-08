@@ -1,0 +1,104 @@
+"use client";
+import React from "react";
+import Layout from "@/layouts/Default";
+import { DataTable } from "@/components/elements/base/datatable";
+import { useTranslation } from "next-i18next";
+import { formatDate } from "date-fns";
+const api = "/api/admin/ext/futures/order";
+const columnConfig: ColumnConfigType[] = [
+  {
+    field: "createdAt",
+    label: "Date",
+    type: "date",
+    sortable: true,
+    filterable: false,
+    getValue: (row) => formatDate(new Date(row.createdAt), "yyyy-MM-dd HH:mm"),
+  },
+  {
+    field: "symbol",
+    label: "Symbol",
+    type: "text",
+    sortable: false,
+    filterable: false,
+  },
+  {
+    field: "type",
+    label: "Type",
+    type: "text",
+    sortable: false,
+    filterable: false,
+    options: [
+      { value: "LIMIT", label: "Limit" },
+      { value: "MARKET", label: "Market" },
+    ],
+    placeholder: "Select type",
+  },
+  {
+    field: "side",
+    label: "Side",
+    type: "text",
+    sortable: false,
+    filterable: false,
+    options: [
+      { value: "BUY", label: "Buy" },
+      { value: "SELL", label: "Sell" },
+    ],
+    placeholder: "Select Side",
+  },
+  {
+    field: "price",
+    label: "Price",
+    type: "number",
+    sortable: false,
+    filterable: false,
+  },
+  {
+    field: "amount",
+    label: "Amount",
+    type: "number",
+    sortable: false,
+    filterable: false,
+  },
+  {
+    field: "fee",
+    label: "Fee",
+    type: "number",
+    sortable: false,
+    filterable: false,
+    getValue: (item) => `${item.fee} ${item.feeCurrency}`,
+  },
+  {
+    field: "status",
+    label: "Status",
+    type: "text",
+    sortable: false,
+    filterable: false,
+    api: `${api}/:id/status`,
+    options: [
+      { value: "OPEN", label: "Open" },
+      { value: "CLOSED", label: "Closed" },
+      { value: "CANCELLED", label: "Cancelled" },
+    ],
+    placeholder: "Select status",
+  },
+];
+const FuturesOrders = () => {
+  const { t } = useTranslation();
+  return (
+    <Layout title={t("Futures Orders Management")} color="muted">
+      <DataTable
+        title={t("Futures Orders")}
+        endpoint={api}
+        columnConfig={columnConfig}
+        isCrud={false}
+        canCreate={false}
+        hasAnalytics={false}
+        canEdit={false}
+        canDelete={false}
+        canView={false}
+      />
+    </Layout>
+  );
+};
+export default FuturesOrders;
+export const permission = "Access Futures Order Management";

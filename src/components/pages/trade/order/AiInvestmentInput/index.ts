@@ -1,0 +1,1 @@
+export { AiInvestmentInput } from "./AiInvestmentInput";
